@@ -9,4 +9,8 @@ with open('test.csv', 'r') as f:
     for row in lines:
         if row[0]:
             subprocess.call('figlet -c -k {}'.format(row[0]).split())
-        time.sleep(float(row[1]))
+        if row[1] and row[1] is not '':
+            time.sleep(float(row[1]))
+        subprocess.call(['clear'])
+
+        
