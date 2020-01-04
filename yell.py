@@ -1,9 +1,15 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 import csv
 import time
 import subprocess
 
-with open('test.csv', 'r') as f:
+# script = 'sister-was-a-witch.csv'
+# script = 'someone-broke-into-house.csv'
+script = 'this-is-for-rachel.csv'
+
+speed_multiplier = 1
+
+with open(script, 'r') as f:
     lines = csv.reader(f)
 
     default_font = 'standard'
@@ -14,6 +20,10 @@ with open('test.csv', 'r') as f:
             font = row[2]
         if row[0]:
             subprocess.call('figlet -w 120 -ckf {} {}'.format(font, row[0]).split())
-        if row[1] is not '':
-            time.sleep(float(row[1]))
-        subprocess.call(['clear'])        
+        if len(row) < 2:
+            print('no time listed, making estimate')
+            wait_time = .05 * len(row[0])
+            time.sleep(wait_time)
+        elif row[1] is not '':
+            time.sleep(float(row[1]) * speed_multiplier)
+        subprocess.call(['clear'])
