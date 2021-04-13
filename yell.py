@@ -5,9 +5,10 @@ import subprocess
 
 # script = 'sister-was-a-witch.csv'
 # script = 'someone-broke-into-house.csv'
-script = 'this-is-for-rachel.csv'
+# script = 'this-is-for-rachel.csv'
+script = 'pixar-one-a-day-box-100.csv'
 
-speed_multiplier = 1
+speed_multiplier = .8
 
 with open(script, 'r') as f:
     lines = csv.reader(f)
